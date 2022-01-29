@@ -77,4 +77,10 @@ dependencies {
     // observeAsState
     //noinspection GradleDependency
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+
+    // Navigation between diff screens
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha04"
+
+    // Image loader
+    implementation("io.coil-kt:coil-compose:1.4.0")
 }
