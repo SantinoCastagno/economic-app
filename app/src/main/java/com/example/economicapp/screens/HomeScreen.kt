@@ -18,6 +18,7 @@ import androidx.navigation.NavController
 import com.example.economicapp.navigation.Screen
 
 import com.example.economicapp.R
+import com.example.economicapp.ui.theme.Black
 import com.example.economicapp.ui.theme.Teal
 
 @Composable
@@ -50,12 +51,12 @@ fun HomeScreen(navController: NavController){
                     verticalArrangement = Arrangement.SpaceAround,
                 ) {
                     Button(
-                        modifier = Modifier.padding(10.dp),
+                        modifier = Modifier.padding(10.dp).border(width = 1.dp, color = Black),
                         onClick = { navController.navigate(Screen.LastDollarScreen.route){} }) {
                         Text(text = "CONSULTAR PRECIO ACTUAL")
                     }
                     Button(
-                        modifier = Modifier.padding(10.dp),
+                        modifier = Modifier.padding(10.dp).border(width = 1.dp, color = Black),
                         onClick = { navController.navigate(Screen.HistoricDollarScreen.route) }) {
                         Text(text = "CONSULTAR HISTORICO")
                     }
@@ -73,7 +74,7 @@ fun HomeScreen(navController: NavController){
 //TODO: Este metodo deberia funcionar para dibujar una imagen, pero no detecta el "drawable"
 @Composable
 fun SimpleImage() {
-    Box(modifier = Modifier.padding(20.dp).border(width = 2.dp, color = Teal)){
+    Box(modifier = Modifier.padding(20.dp)){//.border(width = 2.dp, color = Black)){
         Image(
             painter = painterResource(id = R.drawable.personal_finance_1),
             contentDescription = "Figura representativa del dinero",
