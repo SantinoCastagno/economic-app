@@ -1,7 +1,6 @@
 package com.example.economicapp.screens
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -28,33 +27,40 @@ fun HistoricDollarScreen(navController: NavController, viewModel: OverviewViewMo
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Valores del mes" ) //${historical[20].valor}
+                    Text("Valores del último mes" ) //${historical[20].valor}
                 }
             ) }
     ){
         // TODO: Diseniar y definir pantalla utilizando "Scaffold","LazyColumn" y "Card"
         Column {
-            Text(
-                "El tamaño de la lista es: ${historical.size}"
-            )
             LazyColumn(
             ) {
                 items(
                     items = historical
-                    itemContent = { dollar ->
-                        DollarValueCard()
-                    }
-                ){}
+                ){
+                    dollar -> 
+                    DollarCard(dollar.date, dollar.valor)
+                }
             }
         }
     }
 }
 
 @Composable
-fun DollarValueCard() {
-    val paddingModifier = Modifier.padding(10.dp)
-    Card(shape = RoundedCornerShape(5.dp), modifier = paddingModifier) {
-        Text(text = "Round corner shape")
+fun DollarCard(date: String, value: String) {
+    val paddingModifier = Modifier.padding(14.dp)
+    Card(
+        elevation = 10.dp,
+        shape = RoundedCornerShape(5.dp),
+        modifier = paddingModifier
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth().padding(16.dp)
+        ) {
+            Text(text = "${date}:")
+            Text(text = "$${value}")
+        }
     }
 }
 
