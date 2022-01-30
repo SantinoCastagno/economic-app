@@ -2,19 +2,23 @@ package com.example.economicapp.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.DefaultPathName
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.economicapp.navigation.Screen
+
+import com.example.economicapp.R
+import com.example.economicapp.ui.theme.Teal
 
 @Composable
 fun HomeScreen(navController: NavController){
@@ -22,42 +26,42 @@ fun HomeScreen(navController: NavController){
         topBar = {
             TopAppBar(
             title = {
-                Text("Inicio" )
+                Text("PANTALLA INICIAL" )
             }
         ) }
     ) {
         //TODO: Una vez que se terminen de acomodar hay que eliminar los colores de los background
         Row(
             modifier = Modifier
-                .fillMaxHeight()
-                .background(color = Color.Red),
+                .fillMaxHeight(),
             verticalAlignment = Alignment.CenterVertically,
         )
         {
             Column(
                 //TODO: Agregar padding top en vez de centrar automaticamente
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .background(color = Color.Green),
+                    .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Column(
                     modifier = Modifier
-                        .height(Dp(200f))
-                        .background(color = Color.Gray),
+                        .height(Dp(400f)),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceEvenly,
+                    verticalArrangement = Arrangement.SpaceAround,
                 ) {
                     Button(
+                        modifier = Modifier.padding(10.dp),
                         onClick = { navController.navigate(Screen.LastDollarScreen.route){} }) {
-                        Text(text = "Consultar precio actual")
+                        Text(text = "CONSULTAR PRECIO ACTUAL")
                     }
                     Button(
+                        modifier = Modifier.padding(10.dp),
                         onClick = { navController.navigate(Screen.HistoricDollarScreen.route) }) {
-                        Text(text = "Consultar historico")
+                        Text(text = "CONSULTAR HISTORICO")
                     }
                     // TODO: configurar una de las imagenes de los assets usando el modulo "coil"
                     // Image(painter = rememberImagePainter(), contentDescription = )
+                    SimpleImage()
                 }
 
                 //TODO: agregar una animacion para que el usuario visualice la descarga de datos
@@ -67,11 +71,16 @@ fun HomeScreen(navController: NavController){
 }
 
 //TODO: Este metodo deberia funcionar para dibujar una imagen, pero no detecta el "drawable"
-//@Composable
-//fun SimpleImage() {
-//    Image(
-//        painter = painterResource(id = R.drawable.personal_finance_1),
-//        contentDescription = "Figura representativa del dinero",
-//        modifier = Modifier.fillMaxWidth()
-//    )
-//}
+@Composable
+fun SimpleImage() {
+    Box(modifier = Modifier.padding(20.dp).border(width = 2.dp, color = Teal)){
+        Image(
+            painter = painterResource(id = R.drawable.personal_finance_1),
+            contentDescription = "Figura representativa del dinero",
+            modifier = Modifier.height(Dp(500f))
+        )
+    }
+
+
+}
+
