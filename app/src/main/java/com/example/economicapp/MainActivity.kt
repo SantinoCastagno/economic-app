@@ -12,6 +12,7 @@ import com.example.economicapp.overview.OverviewViewModel
 import com.example.economicapp.ui.theme.EconomicAppTheme
 import androidx.compose.runtime.getValue
 import com.example.economicapp.navigation.Navigation
+import com.example.economicapp.network.Dollar
 import com.example.economicapp.network.DollarHistorical
 import com.example.economicapp.screens.HomeScreen
 
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val viewModel:      OverviewViewModel       by viewModels()
-            val currentValue:   String                  by viewModel.status().observeAsState("")
+            val currentValue:   Dollar                  by viewModel.status().observeAsState(Dollar("","",""))
             val historical:     List<DollarHistorical>  by viewModel.statusHistorical().observeAsState(emptyList())
 
             EconomicAppTheme {

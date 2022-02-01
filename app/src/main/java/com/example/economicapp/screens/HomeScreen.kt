@@ -77,7 +77,5 @@ fun SimpleImage() {
             modifier = Modifier.height(Dp(500f))
         )
     }
-
-
 }
 
