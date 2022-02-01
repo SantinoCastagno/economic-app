@@ -9,6 +9,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -21,6 +22,7 @@ import java.lang.reflect.Modifier
 
 @Composable
 fun LastDollarScreen(navController: NavController, viewModel: OverviewViewModel){
+    val isLoading = viewModel.isLoading().observeAsState(false)
     Scaffold(
         topBar = {
             TopAppBar(
@@ -30,19 +32,24 @@ fun LastDollarScreen(navController: NavController, viewModel: OverviewViewModel)
             ) }
     ) {
         ValueCard(texto = "El valor de compra es", value = viewModel.status().value.toString())
+        Text(text = isLoading.toString())
     }
 }
 
 @Composable
 fun ValueCard(value: String, texto: String) {
-    val paddingModifier = androidx.compose.ui.Modifier.padding(14.dp).border(width = 2.dp, color = Teal)
+    val paddingModifier = androidx.compose.ui.Modifier
+        .padding(14.dp)
+        .border(width = 2.dp, color = Teal)
     Card(
         elevation = 10.dp,
         modifier = paddingModifier
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = androidx.compose.ui.Modifier.fillMaxWidth().padding(16.dp)
+            modifier = androidx.compose.ui.Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             //Text(text = "${texto}")
             Text(text = "$${value}")
