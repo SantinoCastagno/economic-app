@@ -15,10 +15,10 @@ fun Navigation(viewModel: OverviewViewModel) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.HomeScreen.route){
         composable(route = Screen.HomeScreen.route) {
-            HomeScreen(navController = navController)
+            HomeScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.LastDollarScreen.route) {
-            LastDollarScreen(navController = navController)
+            LastDollarScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.HistoricDollarScreen.route) {
             HistoricDollarScreen(navController = navController, viewModel = viewModel)

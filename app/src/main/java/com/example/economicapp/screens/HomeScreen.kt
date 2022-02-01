@@ -18,20 +18,20 @@ import androidx.navigation.NavController
 import com.example.economicapp.navigation.Screen
 
 import com.example.economicapp.R
+import com.example.economicapp.overview.OverviewViewModel
 import com.example.economicapp.ui.theme.Black
 import com.example.economicapp.ui.theme.Teal
 
 @Composable
-fun HomeScreen(navController: NavController){
+fun HomeScreen(navController: NavController, viewModel: OverviewViewModel){
     Scaffold(
         topBar = {
             TopAppBar(
             title = {
-                Text("PANTALLA INICIAL" )
+                Text("PANTALLA INICIAL")
             }
         ) }
     ) {
-        //TODO: Una vez que se terminen de acomodar hay que eliminar los colores de los background
         Row(
             modifier = Modifier
                 .fillMaxHeight(),
@@ -39,7 +39,6 @@ fun HomeScreen(navController: NavController){
         )
         {
             Column(
-                //TODO: Agregar padding top en vez de centrar automaticamente
                 modifier = Modifier
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -60,8 +59,7 @@ fun HomeScreen(navController: NavController){
                         onClick = { navController.navigate(Screen.HistoricDollarScreen.route) }) {
                         Text(text = "CONSULTAR HISTORICO")
                     }
-                    // TODO: configurar una de las imagenes de los assets usando el modulo "coil"
-                    // Image(painter = rememberImagePainter(), contentDescription = )
+                    // TODO: eliminar el modulo coil ya que no se está utilizando
                     SimpleImage()
                 }
 
@@ -70,8 +68,6 @@ fun HomeScreen(navController: NavController){
         }
     }
 }
-
-//TODO: Este metodo deberia funcionar para dibujar una imagen, pero no detecta el "drawable"
 @Composable
 fun SimpleImage() {
     Box(modifier = Modifier.padding(20.dp)){//.border(width = 2.dp, color = Black)){
