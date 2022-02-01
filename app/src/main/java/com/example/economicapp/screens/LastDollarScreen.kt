@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.economicapp.R
+import com.example.economicapp.network.Dollar
 import com.example.economicapp.overview.OverviewViewModel
 import com.example.economicapp.ui.theme.Black
 import com.example.economicapp.ui.theme.Teal
@@ -23,16 +24,21 @@ import java.lang.reflect.Modifier
 @Composable
 fun LastDollarScreen(navController: NavController, viewModel: OverviewViewModel){
     val isLoading = viewModel.isLoading().observeAsState(false)
+    val lastDollar = viewModel.status().observeAsState(Dollar("","",""))
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Precio actual" )
+                    Text("PRECIO ACTUAL" )
                 }
             ) }
     ) {
-        ValueCard(texto = "El valor de compra es", value = viewModel.status().value.toString())
-        Text(text = isLoading.toString())
+
+        if (isLoading.value){
+            Text(text = "Cargando")
+        } else {
+            ValueCard(texto = "El valor de compra es", value = lastDollar.value.fecha)
+        }
     }
 }
 

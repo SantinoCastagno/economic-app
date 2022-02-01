@@ -21,8 +21,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val viewModel:      OverviewViewModel       by viewModels()
-            val currentValue:   Dollar                  by viewModel.status().observeAsState(Dollar("","",""))
-            val historical:     List<DollarHistorical>  by viewModel.statusHistorical().observeAsState(emptyList())
 
             EconomicAppTheme {
                 // A surface container using the 'background' color from the theme
