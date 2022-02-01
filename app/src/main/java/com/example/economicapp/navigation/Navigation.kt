@@ -13,7 +13,7 @@ import com.example.economicapp.screens.LastDollarScreen
 @Composable
 fun Navigation(viewModel: OverviewViewModel) {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.LastDollarScreen.route){
+    NavHost(navController = navController, startDestination = Screen.HomeScreen.route){
         composable(route = Screen.HomeScreen.route) {
             HomeScreen(navController = navController, viewModel = viewModel)
         }
