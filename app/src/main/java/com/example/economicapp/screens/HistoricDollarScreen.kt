@@ -65,4 +65,3 @@ fun DollarCard(date: String, value: String) {
 }
 
 
-

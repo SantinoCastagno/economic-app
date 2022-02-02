@@ -1,26 +1,21 @@
 package com.example.economicapp.screens
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.DefaultPathName
-import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.economicapp.navigation.Screen
+import com.example.economicapp.screens.navigation.Screen
 
 import com.example.economicapp.R
 import com.example.economicapp.overview.OverviewViewModel
 import com.example.economicapp.ui.theme.Black
-import com.example.economicapp.ui.theme.Teal
 
 @Composable
 fun HomeScreen(navController: NavController, viewModel: OverviewViewModel){
@@ -72,7 +67,7 @@ fun HomeScreen(navController: NavController, viewModel: OverviewViewModel){
 fun SimpleImage() {
     Box(modifier = Modifier.padding(20.dp)){//.border(width = 2.dp, color = Black)){
         Image(
-            painter = painterResource(id = R.drawable.personal_finance_1),
+            painter = painterResource(id = R.drawable.personal_finance),
             contentDescription = "Figura representativa del dinero",
             modifier = Modifier.height(Dp(500f))
         )

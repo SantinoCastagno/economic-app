@@ -5,16 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.economicapp.overview.OverviewViewModel
 import com.example.economicapp.ui.theme.EconomicAppTheme
-import androidx.compose.runtime.getValue
-import com.example.economicapp.navigation.Navigation
-import com.example.economicapp.network.Dollar
-import com.example.economicapp.network.DollarHistorical
-import com.example.economicapp.screens.HomeScreen
+import com.example.economicapp.screens.navigation.Navigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +18,6 @@ class MainActivity : ComponentActivity() {
             EconomicAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    //TODO: los valores enviados por parametros son los accesibles desde este momento y no funcionan
                     Navigation(viewModel)
                     //Text(text = "${historical.size}")
                 }
