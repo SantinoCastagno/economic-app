@@ -28,6 +28,7 @@ class OverviewViewModel : ViewModel() {
         getHistorical()
     }
 
+    //TODO: Corregir funciones al utilizar la clase Repository
     private fun getDollar() {
         viewModelScope.launch {
             try {

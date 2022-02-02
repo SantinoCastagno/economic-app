@@ -31,7 +31,7 @@ fun HistoricDollarScreen(navController: NavController, viewModel: OverviewViewMo
                 }
             ) }
     ){
-        // TODO: Diseniar y definir pantalla utilizando "Scaffold","LazyColumn" y "Card"
+        // TODO: Realizar paginacion para acceder a los nuevos datos
         Column {
             LazyColumn(
             ) {
