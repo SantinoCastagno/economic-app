@@ -14,34 +14,39 @@ import androidx.compose.runtime.livedata.observeAsState
 
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-
 import androidx.compose.ui.Modifier
-import com.example.economicapp.network.Dollar
-import com.example.economicapp.network.DollarHistorical
-import com.example.economicapp.overview.OverviewViewModel
+import com.example.economicapp.model.DollarHistorical
+import com.example.economicapp.DollarViewModel
 
 @Composable
-fun HistoricDollarScreen(navController: NavController, viewModel: OverviewViewModel){
-    val historical: List<DollarHistorical> by viewModel.statusHistorical().observeAsState(emptyList())
+fun HistoricDollarScreen(navController: NavController, viewModel: DollarViewModel) {
+    val historical: List<DollarHistorical> by viewModel.statusHistorical()
+        .observeAsState(emptyList())
+    val isLoading = viewModel.isLoading().observeAsState(false)
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("Valores del último mes" ) //${historical[20].valor}
+                    Text("Valores del último mes")
                 }
-            ) }
-    ){
+            )
+        }
+    ) {
         // TODO: Diseniar y definir pantalla utilizando "Scaffold","LazyColumn" y "Card"
         Column {
-            LazyColumn(
-            ) {
-                items(
-                    items = historical
-                ){
-                    dollar -> 
-                    DollarCard(dollar.date, dollar.valor)
+            if (isLoading.value) {
+                Text(text = "Cargando...")
+            } else {
+                LazyColumn(
+                ) {
+                    items(
+                        items = historical
+                    ) { dollar ->
+                        DollarCard(dollar.date, dollar.valor)
+                    }
                 }
             }
+
         }
     }
 }
@@ -56,7 +61,9 @@ fun DollarCard(date: String, value: String) {
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Text(text = "${date}:")
             Text(text = "$${value}")

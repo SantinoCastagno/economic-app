@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -32,6 +33,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
         useIR = true
+        freeCompilerArgs = ['-Xjvm-default=enable']
     }
     buildFeatures {
         compose true
@@ -52,20 +54,15 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
-    //noinspection GradleDependency
     implementation "androidx.compose.ui:ui:$compose_version"
-    //noinspection GradleDependency
     implementation "androidx.compose.material:material:$compose_version"
-    //noinspection GradleDependency
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
     implementation 'androidx.activity:activity-compose:1.4.0'
     testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    //noinspection GradleDependency
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    //noinspection GradleDependency
     debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
 
     // Retrofit with Moshi Converter
@@ -75,12 +72,21 @@ dependencies {
     implementation 'com.squareup.moshi:moshi-kotlin:1.9.3'
 
     // observeAsState
-    //noinspection GradleDependency
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
 
     // Navigation between diff screens
-    implementation "androidx.navigation:navigation-compose:2.4.0-alpha04"
+    implementation "androidx.navigation:navigation-compose:2.5.0-alpha01"
 
     // Image loader
     implementation("io.coil-kt:coil-compose:1.4.0")
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation 'androidx.room:room-ktx:2.4.1'
+    kapt "androidx.room:room-compiler:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // Lifecycle libraries
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
 }
