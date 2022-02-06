@@ -1,4 +1,4 @@
-package com.example.economicapp.screens
+package com.example.economicapp.presentation.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -48,11 +48,10 @@ fun HistoricDollarScreen(navController: NavController, viewModel: DollarViewMode
 
 @Composable
 fun DollarCard(date: String, value: String) {
-    val paddingModifier = Modifier.padding(14.dp)
     Card(
         elevation = 15.dp,
         shape = RoundedCornerShape(10.dp),
-        modifier = paddingModifier
+        modifier = Modifier.padding(14.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,

@@ -1,4 +1,4 @@
-package com.example.economicapp.ui.theme
+package com.example.economicapp.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

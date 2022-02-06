@@ -5,9 +5,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.economicapp.DollarViewModel
-import com.example.economicapp.screens.HistoricDollarScreen
-import com.example.economicapp.screens.HomeScreen
-import com.example.economicapp.screens.LastDollarScreen
+import com.example.economicapp.presentation.screens.HistoricDollarScreen
+import com.example.economicapp.presentation.screens.HomeScreen
 
 @Composable
 fun Navigation(viewModel: DollarViewModel) {
@@ -15,9 +14,6 @@ fun Navigation(viewModel: DollarViewModel) {
     NavHost(navController = navController, startDestination = Screen.HomeScreen.route){
         composable(route = Screen.HomeScreen.route) {
             HomeScreen(navController = navController, viewModel = viewModel)
-        }
-        composable(route = Screen.LastDollarScreen.route) {
-            LastDollarScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.HistoricDollarScreen.route) {
             HistoricDollarScreen(navController = navController, viewModel = viewModel)

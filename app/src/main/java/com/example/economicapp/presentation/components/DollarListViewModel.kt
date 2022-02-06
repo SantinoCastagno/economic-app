@@ -1,4 +1,4 @@
-package com.example.economicapp.overview.components
+package com.example.economicapp.presentation.components
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
