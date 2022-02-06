@@ -14,15 +14,15 @@ import androidx.compose.runtime.livedata.observeAsState
 
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-
 import androidx.compose.ui.Modifier
-import com.example.economicapp.network.Dollar
-import com.example.economicapp.network.DollarHistorical
-import com.example.economicapp.overview.OverviewViewModel
+import com.example.economicapp.model.DollarHistorical
+import com.example.economicapp.DollarViewModel
 
 @Composable
-fun HistoricDollarScreen(navController: NavController, viewModel: OverviewViewModel){
-    val historical: List<DollarHistorical> by viewModel.statusHistorical().observeAsState(emptyList())
+fun HistoricDollarScreen(navController: NavController, viewModel: DollarViewModel) {
+    val historical: List<DollarHistorical> by viewModel.statusHistorical()
+        .observeAsState(emptyList())
+    val isLoading = viewModel.isLoading().observeAsState(false)
     Scaffold(
         topBar = {
             TopAppBar(
@@ -63,5 +63,6 @@ fun DollarCard(date: String, value: String) {
         }
     }
 }
+
 
 

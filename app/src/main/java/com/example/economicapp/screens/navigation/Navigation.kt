@@ -1,16 +1,16 @@
-package com.example.economicapp.screens.navigation
+package com.example.economicapp.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.economicapp.overview.OverviewViewModel
+import com.example.economicapp.DollarViewModel
 import com.example.economicapp.screens.HistoricDollarScreen
 import com.example.economicapp.screens.HomeScreen
 import com.example.economicapp.screens.LastDollarScreen
 
 @Composable
-fun Navigation(viewModel: OverviewViewModel) {
+fun Navigation(viewModel: DollarViewModel) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.HomeScreen.route){
         composable(route = Screen.HomeScreen.route) {
