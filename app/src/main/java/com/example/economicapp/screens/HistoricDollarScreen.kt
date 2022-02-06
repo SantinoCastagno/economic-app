@@ -50,8 +50,8 @@ fun HistoricDollarScreen(navController: NavController, viewModel: OverviewViewMo
 fun DollarCard(date: String, value: String) {
     val paddingModifier = Modifier.padding(14.dp)
     Card(
-        elevation = 10.dp,
-        shape = RoundedCornerShape(5.dp),
+        elevation = 15.dp,
+        shape = RoundedCornerShape(10.dp),
         modifier = paddingModifier
     ) {
         Row(

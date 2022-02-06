@@ -69,16 +69,25 @@ fun HomeScreen(navController: NavController, viewModel: OverviewViewModel){
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.SpaceAround,
                 ) {
-                    Box(modifier = Modifier.width(250.dp).height(100.dp).border(width = 2.dp, color = Black))
+                    Box(
+                        modifier = Modifier
+                            .width(250.dp)
+                            .height(100.dp)
+                            //.border(width = 2.dp, color = Black)
+                    )
                     {
                         if(!isLoading.value){
-                            Text(text = "Actualizado a ${lastDollar.value.fecha}")
+                            Text(text = lastDollar.value.fecha)
                             Row() {
-                                Column() {
+                                Card() {
+                                    Column() {
 
+                                    }
                                 }
-                                Column() {
+                                Card() {
+                                    Column() {
 
+                                    }
                                 }
                             }
                         }
