@@ -2,7 +2,7 @@ package com.example.economicapp.overview.components
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import com.example.economicapp.network.DollarHistorical
+import com.example.economicapp.model.DollarHistorical
 
 const val PAGE_SIZE = 10
 
