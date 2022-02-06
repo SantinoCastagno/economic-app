@@ -1,5 +1,6 @@
 package com.example.economicapp.presentation.screens
 
+import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -10,6 +11,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -62,38 +64,88 @@ fun HomeScreen(navController: NavController, viewModel: DollarViewModel){
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+                MainContent(isLoading.value, lastDollar.value, navController)
+            }
+        }
+    }
+}
+
+@Composable
+fun MainContent(loadingValue: Boolean, dollarValue: Dollar, navController: NavController){
+    //to detect orientation
+    val configuration = LocalConfiguration.current
+    when (configuration.orientation){
+        Configuration.ORIENTATION_PORTRAIT -> {
+            Column(
+                modifier = Modifier
+                    .fillMaxHeight(0.9f)
+                ,
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceAround,
+            ) {
+                Box(
+                    modifier = Modifier.weight(0.3f),
+                    contentAlignment = Alignment.Center
+                ) {
+                    LastDollarCard(
+                        loadingValue = loadingValue,
+                        dollarValue = dollarValue
+                    )
+                }
+                Box(
+                    modifier = Modifier.weight(0.5f),
+                    contentAlignment = Alignment.Center
+                ){
+                    EconomicImage()
+                }
+                Box(
+                    modifier = Modifier.weight(0.15f),
+                    contentAlignment = Alignment.Center
+                ) {
+                    NavigationButton(navController)
+                }
+            }
+        }
+        Configuration.ORIENTATION_LANDSCAPE -> {
+            Row(
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                Box(
+                    modifier = Modifier
+                        .weight(0.5f),
+                    contentAlignment = Alignment.Center
+                ) {
+                    EconomicImage()
+                }
                 Column(
                     modifier = Modifier
-                        .fillMaxHeight(0.9f)
-                    ,
+                        .weight(0.5f),
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceAround,
+                    verticalArrangement = Arrangement.SpaceEvenly
                 ) {
                     Box(
-                        modifier = Modifier.weight(0.3f),
+                        modifier = Modifier
+                            .weight(0.5f),
                         contentAlignment = Alignment.Center
                     ) {
                         LastDollarCard(
-                            loadingValue = isLoading.value,
-                            dollarValue = lastDollar.value
+                            loadingValue = loadingValue,
+                            dollarValue = dollarValue
                         )
                     }
                     Box(
-                        modifier = Modifier.weight(0.5f),
-                        contentAlignment = Alignment.Center
-                    ){
-                        EconomicImage()
-                    }
-                    Box(
-                        modifier = Modifier.weight(0.15f),
+                        modifier = Modifier
+                            .weight(0.3f),
                         contentAlignment = Alignment.Center
                     ) {
-                        NavigationButton(navController = navController)
+                        NavigationButton(navController)
                     }
                 }
             }
         }
     }
+
+
 }
 
 @Composable
@@ -102,7 +154,7 @@ fun LastDollarCard(loadingValue: Boolean, dollarValue: Dollar){
         elevation = 30.dp,
         shape = RoundedCornerShape(10.dp),
         contentColor = Color.DarkGray,
-        modifier = Modifier
+        modifier = Modifier.fillMaxSize(0.7f)
     ){
         Column(
             modifier = Modifier
@@ -114,12 +166,14 @@ fun LastDollarCard(loadingValue: Boolean, dollarValue: Dollar){
             if(!loadingValue){
                 Box(modifier = Modifier.weight(0.40f),
                 contentAlignment = Alignment.Center){
-                    Text(text = "Actualizado: ${dollarValue.fecha}")
+                    Text(text = "Fecha: ${dollarValue.fecha}")
                 }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceEvenly,
-                    modifier = Modifier.weight(0.60f).fillMaxWidth(),
+                    modifier = Modifier
+                        .weight(0.60f)
+                        .fillMaxWidth(),
                 ) {
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally
