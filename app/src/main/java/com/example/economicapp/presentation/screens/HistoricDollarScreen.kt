@@ -23,6 +23,8 @@ fun HistoricDollarScreen(navController: NavController, viewModel: DollarViewMode
     val historical: List<DollarHistorical> by viewModel.statusHistorical()
         .observeAsState(emptyList())
     val isLoading = viewModel.isLoading().observeAsState(false)
+
+
     Scaffold(
         topBar = {
             TopAppBar(

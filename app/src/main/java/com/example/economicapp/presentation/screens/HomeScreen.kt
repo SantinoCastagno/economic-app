@@ -22,6 +22,7 @@ import com.example.economicapp.model.Dollar
 import com.example.economicapp.navigation.Screen
 import com.example.economicapp.presentation.ui.theme.Black
 import com.example.economicapp.presentation.ui.theme.Grey
+import com.example.economicapp.presentation.ui.theme.Red
 
 @Composable
 fun HomeScreen(navController: NavController, viewModel: DollarViewModel){
@@ -38,17 +39,7 @@ fun HomeScreen(navController: NavController, viewModel: DollarViewModel){
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text("PANTALLA INICIAL")
-                    if (isLoading.value){
-                        CircularProgressIndicator(
-                            modifier = Modifier
-                                .padding(horizontal = 15.dp)
-                                .width(40.dp),
-                            color = Grey,
-                            strokeWidth = (2.8).dp,
-                        )
-                    }
-
+                    Text("Pantalla inicial")
                 }
             }
         ) }
@@ -164,7 +155,8 @@ fun LastDollarCard(loadingValue: Boolean, dollarValue: Dollar){
         )
         {
             if(!loadingValue){
-                Box(modifier = Modifier.weight(0.40f),
+                Box(modifier = Modifier
+                    .weight(0.40f),
                 contentAlignment = Alignment.Center){
                     Text(text = "Fecha: ${dollarValue.fecha}")
                 }
@@ -186,6 +178,20 @@ fun LastDollarCard(loadingValue: Boolean, dollarValue: Dollar){
                     ) {
                         Text(text = "Venta")
                         Text(text = "$" + dollarValue.venta)
+                    }
+                }
+            } else {
+                if (loadingValue){
+                    Box(modifier = Modifier
+                        .fillMaxSize()
+                        .border(width = 2.dp, color = Red)
+                        ,
+                        contentAlignment = Alignment.Center
+                    ){
+                        CircularProgressIndicator(
+                            color = Red,
+                            strokeWidth = (2.8).dp,
+                        )
                     }
                 }
             }
