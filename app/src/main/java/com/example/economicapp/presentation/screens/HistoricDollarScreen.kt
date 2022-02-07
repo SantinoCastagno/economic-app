@@ -57,7 +57,9 @@ fun DollarCard(date: String, value: String) {
     ) {
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth().padding(16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
         ) {
             Text(text = "${date}:")
             Text(text = "$${value}")

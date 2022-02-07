@@ -93,7 +93,10 @@ fun MainContent(loadingValue: Boolean, dollarValue: Dollar, navController: NavCo
                     modifier = Modifier.weight(0.15f),
                     contentAlignment = Alignment.Center
                 ) {
-                    NavigationButton(navController)
+                    NavigationButton(
+                        navController = navController,
+                        loadingValue = loadingValue
+                    )
                 }
             }
         }
@@ -129,7 +132,10 @@ fun MainContent(loadingValue: Boolean, dollarValue: Dollar, navController: NavCo
                             .weight(0.3f),
                         contentAlignment = Alignment.Center
                     ) {
-                        NavigationButton(navController)
+                        NavigationButton(
+                            navController = navController,
+                            loadingValue = loadingValue
+                        )
                     }
                 }
             }
@@ -158,7 +164,10 @@ fun LastDollarCard(loadingValue: Boolean, dollarValue: Dollar){
                 Box(modifier = Modifier
                     .weight(0.40f),
                 contentAlignment = Alignment.Center){
-                    Text(text = "Fecha: ${dollarValue.fecha}")
+                    Text(
+                        text = "Fecha: ${dollarValue.fecha}",
+                        color = Red
+                    )
                 }
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -213,12 +222,14 @@ fun EconomicImage(){
 }
 
 @Composable
-fun NavigationButton(navController: NavController){
+fun NavigationButton(navController: NavController, loadingValue: Boolean){
     Button(
+        enabled = !loadingValue,
         modifier = Modifier
             .padding(10.dp)
             .border(width = 1.dp, color = Black),
-        onClick = {navController.navigate(Screen.HistoricDollarScreen.route) }) {
+        onClick = {navController.navigate(Screen.HistoricDollarScreen.route)
+        }) {
         Text(text = "CONSULTAR HISTORICO")
     }
 }
