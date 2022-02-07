@@ -31,7 +31,6 @@ fun HomeScreen(navController: NavController, viewModel: DollarViewModel){
 
     Scaffold(
         topBar = {
-
             TopAppBar(
                 title = {
                 Row(
@@ -190,7 +189,6 @@ fun LastDollarCard(loadingValue: Boolean, dollarValue: Dollar){
                     }
                 }
             } else {
-                if (loadingValue){
                     Box(modifier = Modifier
                         .fillMaxSize()
                         .border(width = 2.dp, color = Red)
@@ -202,7 +200,7 @@ fun LastDollarCard(loadingValue: Boolean, dollarValue: Dollar){
                             strokeWidth = (2.8).dp,
                         )
                     }
-                }
+
             }
         }
     }
