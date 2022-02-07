@@ -2,11 +2,12 @@ package com.example.economicapp.presentation.components
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.ViewModel
 import com.example.economicapp.model.DollarHistorical
 
 const val PAGE_SIZE = 10
 
-class DollarListViewModel {
+class DollarListViewModel: ViewModel(){
     private val historical: MutableState<List<DollarHistorical>> = mutableStateOf(emptyList())
     private val page = mutableStateOf(1)
     private val loadingPage = mutableStateOf(false)

@@ -8,8 +8,8 @@ import com.example.economicapp.model.DollarHistorical
 
 @Dao
 interface DollarHistoricalDao {
-    @Query("SELECT * FROM dollarHistorical ORDER BY date ASC")
-    suspend fun getHistorical(): List<DollarHistorical>
+    @Query("SELECT * FROM dollarHistorical ORDER BY date ASC LIMIT :fin OFFSET :init")
+    suspend fun getHistorical(init: Int, fin: Int): List<DollarHistorical>
 
     @Query("DELETE FROM dollarHistorical")
     suspend fun deleteHistoricalDollar()

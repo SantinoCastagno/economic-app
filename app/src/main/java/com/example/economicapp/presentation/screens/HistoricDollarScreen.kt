@@ -3,6 +3,7 @@ package com.example.economicapp.presentation.screens
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Scaffold
@@ -17,12 +18,14 @@ import androidx.navigation.NavController
 import androidx.compose.ui.Modifier
 import com.example.economicapp.model.DollarHistorical
 import com.example.economicapp.DollarViewModel
+import com.example.economicapp.presentation.components.DollarListViewModel
 
 @Composable
-fun HistoricDollarScreen(navController: NavController, viewModel: DollarViewModel) {
+fun HistoricDollarScreen(navController: NavController, viewModel: DollarViewModel, viewModelHis: DollarListViewModel) {
     val historical: List<DollarHistorical> by viewModel.statusHistorical()
         .observeAsState(emptyList())
     val isLoading = viewModel.isLoading().observeAsState(false)
+
 
 
     Scaffold(
@@ -37,10 +40,10 @@ fun HistoricDollarScreen(navController: NavController, viewModel: DollarViewMode
         Column {
             LazyColumn(
             ) {
-                items(
-                    items = historical
+                itemsIndexed(
+                    items= historical
                 ){
-                    dollar -> 
+                    index, dollar ->
                     DollarCard(dollar.date, dollar.valor)
                 }
             }

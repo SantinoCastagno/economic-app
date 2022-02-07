@@ -9,7 +9,6 @@ import com.example.economicapp.network.DollarApi
 import java.lang.Exception
 
 class DollarRepository {
-
     suspend fun getDollar(dollarDao: DollarDao): Dollar {
         var dollar : Dollar
         try {
@@ -23,7 +22,7 @@ class DollarRepository {
         return dollar
     }
 
-    suspend fun getHistorical(dollarHistoricalDao: DollarHistoricalDao): List<DollarHistorical> {
+    suspend fun getHistorical(dollarHistoricalDao: DollarHistoricalDao, init: Int, fin: Int): List<DollarHistorical> {
         var dollarHistorical : List<DollarHistorical>
         try {
             dollarHistorical = DollarApi.retrofitService.getHistorical()
@@ -31,9 +30,33 @@ class DollarRepository {
             dollarHistoricalDao.insertDollarHistorical(dollarHistorical)
         } catch (e: Exception) {
             Log.e("ERROR", "Failure: ${e.message}")
-            dollarHistorical = dollarHistoricalDao.getHistorical()
+            dollarHistorical = dollarHistoricalDao.getHistorical(init = init, fin = fin)
         }
         return dollarHistorical
+    }
+
+    /*
+    suspend fun updateLocalDatabase(dollarDao: DollarDao, dollarHistoricalDao: DollarHistoricalDao){
+        var dollar : Dollar
+        var dollarHistorical : List<DollarHistorical>
+        try {
+            dollar = DollarApi.retrofitService.getDollar()
+            dollarDao.deleteDollar()
+            dollarDao.insertDollar(dollar)
+            dollarHistorical = DollarApi.retrofitService.getHistorical()
+            dollarHistoricalDao.deleteHistoricalDollar()
+            dollarHistoricalDao.insertDollarHistorical(dollarHistorical)
+        } catch(e: Exception) {
+            Log.e("ERROR", "Failure: ${e.message}")
+        }
+    }
+
+    suspend fun getLastDollar(dollarDao: DollarDao): Dollar{
+        return dollarDao.getDollar()
+    }
+    */
+    suspend fun getHistoricDollarPage(){
+
     }
 
 }
