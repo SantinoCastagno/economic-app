@@ -17,11 +17,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 
 import com.example.economicapp.R
-import com.example.economicapp.DollarViewModel
+import com.example.economicapp.presentation.components.DollarViewModel
 import com.example.economicapp.model.Dollar
-import com.example.economicapp.navigation.Screen
+import com.example.economicapp.presentation.navigation.Screen
 import com.example.economicapp.presentation.ui.theme.Black
-import com.example.economicapp.presentation.ui.theme.Grey
 import com.example.economicapp.presentation.ui.theme.Red
 
 @Composable
@@ -192,8 +191,7 @@ fun LastDollarCard(loadingValue: Boolean, dollarValue: Dollar){
                     Box(modifier = Modifier
                         .fillMaxSize()
                         .border(width = 2.dp, color = Red)
-                        ,
-                        contentAlignment = Alignment.Center
+                        ,contentAlignment = Alignment.Center
                     ){
                         CircularProgressIndicator(
                             color = Red,

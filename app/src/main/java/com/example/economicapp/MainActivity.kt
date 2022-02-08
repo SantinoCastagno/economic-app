@@ -5,8 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.material.*
-import com.example.economicapp.navigation.Navigation
-import com.example.economicapp.presentation.components.DollarListViewModel
+import com.example.economicapp.presentation.navigation.Navigation
+import com.example.economicapp.presentation.components.DollarHisViewModel
+import com.example.economicapp.presentation.components.DollarHisViewModelFactory
+import com.example.economicapp.presentation.components.DollarViewModel
+import com.example.economicapp.presentation.components.DollarViewModelFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +21,11 @@ class MainActivity : ComponentActivity() {
                     (this.applicationContext as DollarApplication).database.dollarHistoricalDao(),
                 )
             }
-            val viewModelHis: DollarListViewModel by viewModels()
+            val viewModelHis: DollarHisViewModel by viewModels {
+                DollarHisViewModelFactory(
+                    (this.applicationContext as DollarApplication).database.dollarHistoricalDao(),
+                )
+            }
             Surface(color = MaterialTheme.colors.background) {
                 Navigation(viewModel, viewModelHis)
             }
