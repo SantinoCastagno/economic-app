@@ -17,7 +17,7 @@ fun Navigation(viewModel: DollarViewModel, viewModelHis: DollarHisViewModel) {
             HomeScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.HistoricDollarScreen.route) {
-            HistoricDollarScreen(navController = navController, viewModelHis = viewModelHis)
+            HistoricDollarScreen(viewModelHis = viewModelHis)
         }
     }
 }
