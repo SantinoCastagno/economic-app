@@ -10,6 +10,7 @@ import com.example.economicapp.presentation.components.DollarHisViewModel
 import com.example.economicapp.presentation.components.DollarHisViewModelFactory
 import com.example.economicapp.presentation.components.DollarViewModel
 import com.example.economicapp.presentation.components.DollarViewModelFactory
+import com.example.economicapp.presentation.theme.EconomicAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +27,10 @@ class MainActivity : ComponentActivity() {
                     (this.applicationContext as DollarApplication).database.dollarHistoricalDao(),
                 )
             }
-            Surface(color = MaterialTheme.colors.background) {
-                Navigation(viewModel, viewModelHis)
+            EconomicAppTheme() {
+                Surface() {
+                    Navigation(viewModel, viewModelHis)
+                }
             }
         }
     }

@@ -20,8 +20,8 @@ import com.example.economicapp.R
 import com.example.economicapp.presentation.components.DollarViewModel
 import com.example.economicapp.model.Dollar
 import com.example.economicapp.presentation.navigation.Screen
-import com.example.economicapp.presentation.ui.theme.Black
-import com.example.economicapp.presentation.ui.theme.Red
+import com.example.economicapp.presentation.theme.Black
+import com.example.economicapp.presentation.theme.Red
 
 @Composable
 fun HomeScreen(navController: NavController, viewModel: DollarViewModel){

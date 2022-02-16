@@ -16,10 +16,10 @@ import androidx.compose.ui.Modifier
 import com.example.economicapp.model.DollarHistorical
 import com.example.economicapp.presentation.components.DollarHisViewModel
 import com.example.economicapp.presentation.components.PAGE_SIZE
-import com.example.economicapp.presentation.ui.theme.Red
+import com.example.economicapp.presentation.theme.Red
 
 @Composable
-fun HistoricDollarScreen(navController: NavController, viewModelHis: DollarHisViewModel) {
+fun HistoricDollarScreen(viewModelHis: DollarHisViewModel) {
     val historical: List<DollarHistorical> by viewModelHis.statusHistorical()
         .observeAsState(emptyList())
     val isLoading by viewModelHis.isLoading().observeAsState(false)

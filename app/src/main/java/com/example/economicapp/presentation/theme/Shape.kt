@@ -1,4 +1,4 @@
-package com.example.economicapp.presentation.ui.theme
+package com.example.economicapp.presentation.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
